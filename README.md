@@ -12,9 +12,10 @@ It is dependent on [Hatena::Graph API for Clojure][hatena-graph-api-for-clojure]
     $ git clone git://github.com/bouzuya/clj-github-to-hatena-graph.git
     $ cd clj-github-to-hatena-graph
     $ cat <<EOT >resources/my.properties
+    filename=/home/user/github-counter.txt
+    graphnames="GitHub Followers","GitHub Following","GitHub Public Repos","GitHub Public Gists"
     username=hatena-username
     password=hatena-password
-    filename=/home/user/github-counter.txt
     EOT
     $ lein uberjar
     $ cp target/github-to-hatena-graph-0.1.0-standalone.jar [install-directory]

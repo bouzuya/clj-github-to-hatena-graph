@@ -1,4 +1,4 @@
-(defproject github-to-hatena-graph "0.1.0"
+(defproject github-to-hatena-graph "0.2.0"
   :description "GitHub to Hatena::Graph"
   :url "http://github.com/bouzuya/clj-github-to-hatena-graph"
   :license {:name "Eclipse Public License"
