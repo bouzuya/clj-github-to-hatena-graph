@@ -20,11 +20,10 @@
 
 (defn -main
   [& args]
-  (let [p (props->map (props "my.properties"))]
-    (binding [graph/*auth* p]
-      (doseq [[date followers following public-repos public-gists] (csv/read-csv (slurp (p :filename)))]
-        (graph/post-data "GitHub Followers" date followers)
-        (graph/post-data "GitHub Following" date following)
-        (graph/post-data "GitHub Public Repos" date public-repos)
-        (graph/post-data "GitHub Public Gists" date public-gists)))))
+  (let [properties (props->map (props "my.properties"))
+        graphnames (first (csv/read-csv (properties :graphnames)))]
+    (binding [graph/*auth* properties]
+      (doseq [[date & values] (csv/read-csv (slurp (properties :filename)))
+              [graphname value] (zipmap graphnames values)]
+          (graph/post-data graphname date value)))))
 
